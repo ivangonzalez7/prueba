@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{nombre}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-row>
+      <ion-col col-10>
+        <p padding-left>
+          <ion-icon name="arrow-dropright" item-start></ion-icon>
+          Cuatrimestre de {{cuatrimestre}}
+        </p>
+        <p padding-left>
+          <ion-icon name="arrow-dropright" item-start></ion-icon>
+          Modalidad de {{estudios}}
+        </p>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button (click)="presentEditSubjectModal()" color="warning" icon-only block>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card>
+  <ion-card-header>
+    <h2>Estudiantes matriculados</h2>
+  </ion-card-header>
+  <ion-list>
+    <ion-item-sliding *ngFor="let e of alumnos">
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <h4>{{e.nombre}} {{e.apellido}}</h4>
+      </ion-item>
+      <ion-item>
+        <button (click)="deleteStudentFromSubject(this.id, e._id)" ion-button icon-right block color="danger">
+          Eliminar estudiante
+        </button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  </ion-card>
+  <div padding>
+    <button (click)="toMatricula()" ion-button icon-right block>
+      Matricular estudiantes
+      <ion-icon name="list-box"></ion-icon>
+    </button>
+  </div>
+</ion-content>
